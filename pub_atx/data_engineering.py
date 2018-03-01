@@ -1,4 +1,5 @@
 from .app import db 
+from .app import app 
 import pandas as pd
 import requests
 import time
@@ -7,7 +8,9 @@ import datetime
 import dateutil.relativedelta
 import quandl
 
-def gather_cmpny_data():
+
+
+def load_cmpny_data():
 
     df_pub_atx = pd.read_csv("Austin-area-Public-Companies-2017-List.csv")
 
@@ -74,7 +77,9 @@ def gather_cmpny_data():
 
     df_pub_atx["lat"]=""
     df_pub_atx["lng"]=""
-    api_key = "AIzaSyACVuBkhxdqFNjcrqvGfo5IUGxQCrVIKxY"
+    
+    api_key = app.config['GOOGLE_API_KEY']
+    
     for index, row in df_pub_atx.iterrows():
         address = row['address']+', '+ row['city']+', '+ row['state']
         api_response = requests.get('https://maps.googleapis.com/maps/api/geocode/json?address={0}&key={1}'.format(address, api_key))
@@ -123,7 +128,7 @@ def gather_cmpny_data():
     df_pub_atx.to_csv("clean_company_list.csv",index=False,encoding='utf-8')
 
 
-def load_tables_cmpny_data():
+
 
     df_company = pd.read_csv("clean_company_list.csv")
     data = df_company.to_dict(orient='records')
@@ -137,11 +142,11 @@ def load_tables_cmpny_data():
     start_dt = d2.strftime("%Y-%m-%d")
     end_dt = d1.strftime("%Y-%m-%d")
 
-    quandl.ApiConfig.api_key = "bkLgy-fmbYDf_AuKMJeV"
+    quandl.ApiConfig.api_key = app.config['QUANDL_API_KEY']
+    # api_key = "bkLgy-fmbYDf_AuKMJeV"
 
     db.engine.execute(CompanyPrcsMnthly.__table__.delete())
 
-    df_tckrs_nf = pd.DataFrame(["id_cmpny","tckr"])
 
     nf_list = []
 
@@ -197,6 +202,9 @@ def load_tables_cmpny_data():
     #     print(len(df_filtered_needed))
         data = df_filtered_needed.to_dict(orient='records')
         db.engine.execute(CompanyPrcsDaily.__table__.insert(),data)
+
+
+  
     
 
 
