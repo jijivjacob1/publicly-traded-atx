@@ -20,8 +20,8 @@ app = Flask(__name__)
 #################################################
 from flask_sqlalchemy import SQLAlchemy
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "sqlite:///pub_atx.sqlite"
-app.config['GOOGLE_API_KEY'] = os.environ.get('GOOGLE_API_KEY', '') or 'AIzaSyACVuBkhxdqFNjcrqvGfo5IUGxQCrVIKxY'
-app.config['QUANDL_API_KEY'] = os.environ.get('QUANDL_API_KEY', '') or 'bkLgy-fmbYDf_AuKMJeV'
+app.config['GOOGLE_API_KEY'] = os.environ.get('GOOGLE_API_KEY', '') or ''
+app.config['QUANDL_API_KEY'] = os.environ.get('QUANDL_API_KEY', '') or ''
 
 
 db = SQLAlchemy(app)
