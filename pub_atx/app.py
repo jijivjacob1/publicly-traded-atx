@@ -60,7 +60,7 @@ def get_company_info(ticker):
                     'companyTicker': sql_response.tckr,
                     'companyExhange': sql_response.exchng,
                     'companyCEO': sql_response.curr_top_exec,
-                    'companyMarketCap': market_cap,
+                    'companyMarketCap': sql_response.marketcap,
                     'companyYear': sql_response.yr_estblsh,
                     'companyTotalStaff': sql_response.austin_staff_cnt,
                     'companyAustinStaff': sql_response.comp_staff_cnt
