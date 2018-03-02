@@ -156,7 +156,7 @@ function buildPlot() {
   });
 }
 
-//buildPlot();
+buildPlot();
 
 
 
@@ -172,19 +172,17 @@ function getNewsArticles() {
 
 
 function getMonth(month) {
-    if left
     var monthInt = parseInt(month);
-    console.log(monthNum)
     var monthNames = ["January", "February", "March", "April", "May", "June",
                       "July", "August", "September", "October", "November", "December" ];
-    return monthNames[monthNum];
+    monthIndex = monthInt -1
+    return monthNames[monthIndex];
 }
 
 function dateTimeToStr(dateTimeObj) {
   var year = dateTimeObj.substring(0,4);
-  var day = dateTimeObj.substring(5,7).replace(/^0+/, '');
-
-  var month = dateTimeObj.substring(8,10);
+  var month = dateTimeObj.substring(5,7).replace(/^0+/, '');
+  var day = dateTimeObj.substring(8,10).replace(/^0+/, '');
   var newMonth = getMonth(month)
   var dateStr = `${newMonth} ${day}, ${year}`
   return dateStr
@@ -197,7 +195,7 @@ function addArticleToHtml(articleJson) {
   articleList.append("article")
         .html(`<div class="wrapped-box">
               <h3> <a href="${articleJson.url}" target="_blank"> ${articleJson.headline} </a> </h3>
-              <h4> ${dateStr} </h4>
+              <h5> ${dateStr} </h5>
               <br />
               <p> ${articleJson.summary} </p>
               <p> Source: ${articleJson.source} </p>
