@@ -45,6 +45,23 @@ def companies():
 
 
 '''
+This function returns a python dictionary of company data from our database.
+It takes one argument, a ticker symbol, that is used to look up company data.
+It is used in the company overview page.
+'''
+def get_company_info(ticker):
+    ticker = ticker.upper()
+    sql_response = session.query(Company).filter(Company.tckr == ticker).first()
+    company_dict = {'companyName': sql_response.name,
+                    'companyIndustry': sql_response.industry,
+                    'companyWebsite': sql_response.website,
+                    'companyDescription': sql_response.gen_buss_desc,
+                    'companyTicker': sql_response.tckr
+    }
+    return company_dict
+
+
+'''
 This api route returns a semi-ordered list of all company tickers in our
 database.  It is used in the company overview page.  It takes one argument, a
 ticker symbol, which appears first in the array.  The remaining tickers appear
