@@ -54,19 +54,26 @@
               {{ companyDescription }}
           </p>
           <p>
+          <div class="well">
+              <h5>Select New Company by Ticker:</h5>
+              <select id="selDataset" onChange='window.open(this.value, "_self")'></select>
+          </div>
           </p>
       </div>
       <div class="row">
         <div class="col-xs-8 col-md-4 wrapped-box">
           <h2> Company Profile </h2>
           <hr class="hr-data-comparison">
-          <div class="well">
-              <h5>Select New Copmany by Ticker:</h5>
-              <select id="selDataset" onChange='window.open(this.value, "_self")'></select>
-          </div>
-          <p> {{ companyWebsite }} </p>
-          <hr class="hr-data-comparison">
-          <p> {{ companyDescription }} </p>
+          <p> Website: <a href="http://{{ companyWebsite }}" target="_blank"> {{ companyWebsite }} </a> </p>{{ companyWebsite }}
+          <p> Address: {{ companyAddress }} </p>
+          <p> Year Established: {{ companyYear }} </p>
+          <p> Industry: {{ companyIndustry }} </p>
+          <p> Stock Ticker: {{ companyTicker }} </p>
+          <p> Stock Exchange: {{ companyExhange }} </p>
+          <p> Market Cap: {{ companyMarketCap }} </p>
+          <p> CEO: {{ companyCEO }} </p>
+          <p> Total Employees: {{ companyTotalStaff }} </p>
+          <p> Austin Employees: {{ companyAustinStaff }} </p>
         </div>
         <div class="col-xs-12 col-md-1"></div>
         <div class="row side-plots-buffer"></div>
