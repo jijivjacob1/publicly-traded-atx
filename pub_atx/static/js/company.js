@@ -193,7 +193,8 @@ function addArticleToHtml(articleJson) {
   var articleList = d3.select(".article-list");
 
   articleList.append("article")
-        .html(`<div class="wrapped-box">
+        .html(`<div>
+              <hr>
               <h3> <a href="${articleJson.url}" target="_blank"> ${articleJson.headline} </a> </h3>
               <h5> ${dateStr} </h5>
               <br />
