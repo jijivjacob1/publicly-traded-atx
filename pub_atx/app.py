@@ -51,7 +51,7 @@ It is used in the company overview page.
 '''
 def get_company_info(ticker):
     ticker = ticker.upper()
-    sql_response = session.query(Company).filter(Company.tckr == ticker).first()
+    sql_response = db.session.query(Company).filter(Company.tckr == ticker).first()
     company_dict = {'companyName': sql_response.name,
                     'companyIndustry': sql_response.industry,
                     'companyWebsite': sql_response.website,
@@ -70,7 +70,7 @@ in alphabetical order.
 @app.route('/tickers/<ticker>')
 def company_tickers_ordered(ticker):
     ticker = ticker.upper()
-    company_data = session.query(Company).all()
+    company_data = db.session.query(Company).all()
     tickers = []
     for company in company_data:
         tickers.append(company.tckr)
