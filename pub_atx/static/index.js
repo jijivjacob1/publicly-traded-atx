@@ -1,7 +1,6 @@
 // load the database into the atxData variable
 atxData = [];
-// queryURL = 'https://localhost:5000/companies';
-queryURL = "https://atxpubliccompanies.herokuapp.com/companies";
+queryURL = '/companies';
 d3.json(queryURL,function(error,response){
     if(error) {
         console.log(error);
