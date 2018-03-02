@@ -1,6 +1,6 @@
 // load the database into the atxData variable
 atxData = [];
-queryURL = 'http://localhost:5000/companies';
+queryURL = '/companies';
 d3.json(queryURL,function(error,response){
     if(error) {
         console.log(error);
