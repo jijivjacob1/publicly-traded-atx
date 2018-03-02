@@ -112,12 +112,7 @@ def company_trading_data(ticker):
     company_dict = get_company_info(ticker)
     company_id = company_dict['companyId']
     trading_data = db.session.query(CompanyPrcsDaily)\
-                    .filter(CompanyPrcsDaily.id_cmpny == company_id).first()
-    '''
-    trading_df = pd.DataFrame(trading_data,
-                columns=['id_cmpny_prcs_daily', 'id_cmpny', 'date', 'open',
-                        'high', 'low', 'close', 'volume'])
-    trading_df = trading_df[['id_cmpny', 'date', 'open', 'high', 'low', 'close', 'volume']]
+                    .filter(CompanyPrcsDaily.id_cmpny == company_id).statement
+    trading_df = pd.read_sql(trading_data, session.bind)
     trading_dict = trading_df.to_dict(orient="records")
-    '''
-    return jsonify([company_id])
+    return jsonify(trading_dict)
