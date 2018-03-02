@@ -55,7 +55,9 @@
           </p>
           <p>
           <div class="well">
-              <h5>Select New Company by Ticker:</h5>
+            <p style="font-family:Georgia, 'Times New Roman', Times, serif">
+                Select New Company by Ticker:
+            </p>
               <select id="selDataset" onChange='window.open(this.value, "_self")'></select>
           </div>
           </p>
@@ -64,16 +66,16 @@
         <div class="col-xs-8 col-md-4 wrapped-box">
           <h2> Company Profile </h2>
           <hr class="hr-data-comparison">
-          <p> Website: <a href="http://{{ companyWebsite }}" target="_blank"> {{ companyWebsite }} </a> </p>{{ companyWebsite }}
-          <p> Address: {{ companyAddress }} </p>
-          <p> Year Established: {{ companyYear }} </p>
-          <p> Industry: {{ companyIndustry }} </p>
-          <p> Stock Ticker: {{ companyTicker }} </p>
-          <p> Stock Exchange: {{ companyExhange }} </p>
-          <p> Market Cap: {{ companyMarketCap }} </p>
-          <p> CEO: {{ companyCEO }} </p>
-          <p> Total Employees: {{ companyTotalStaff }} </p>
-          <p> Austin Employees: {{ companyAustinStaff }} </p>
+          <p> <strong> Website: <strong> <a href="http://{{ companyWebsite }}" target="_blank"> {{ companyWebsite }} </a> </p>
+          <p> <strong> Address: <strong> {{ companyAddress }} </p>
+          <p> <strong> Year Established: <strong> {{ companyYear }} </p>
+          <p> <strong> Industry: <strong> {{ companyIndustry }} </p>
+          <p> <strong> Stock Ticker: <strong> {{ companyTicker }} </p>
+          <p> <strong> Stock Exchange: <strong> {{ companyExhange }} </p>
+          <p> <strong> Market Cap: <strong> {{ companyMarketCap }} </p>
+          <p> <strong> Top Executive: <strong> {{ companyCEO }} </p>
+          <p> <strong> Total Employees: <strong> {{ companyTotalStaff }} </p>
+          <p> <strong> Austin Employees: <strong> {{ companyAustinStaff }} </p>
         </div>
         <div class="col-xs-12 col-md-1"></div>
         <div class="row side-plots-buffer"></div>

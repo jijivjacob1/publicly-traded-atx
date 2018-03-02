@@ -52,17 +52,19 @@ It is used in the company overview page.
 def get_company_info(ticker):
     ticker = ticker.upper()
     sql_response = db.session.query(Company).filter(Company.tckr == ticker).first()
+    market_cap = '${:,.2f}'.format(sql_response.marketcap.float())
     company_dict = {'companyName': sql_response.name,
                     'companyIndustry': sql_response.sector,
                     'companyWebsite': sql_response.website,
+                    'companyAddress': sql_response.address,
                     'companyDescription': sql_response.gen_buss_desc,
                     'companyTicker': sql_response.tckr,
                     'companyExhange': sql_response.exchng,
                     'companyCEO': sql_response.curr_top_exec,
-                    'companyMarketCap': sql_response.marketcap,
-                    'companyTicker': sql_response.yr_estblsh,
-                    'companyTotalStaff': sql_response.austin_staff_cnt,
-                    'companyAustinStaff': sql_response.comp_staff_cnt
+                    'companyMarketCap': market_cap,
+                    'companyYear': sql_response.yr_estblsh,
+                    'companyTotalStaff': sql_response.austin_staff_cnt.int(),
+                    'companyAustinStaff': sql_response.comp_staff_cnt.int()
     }
     return company_dict
 
