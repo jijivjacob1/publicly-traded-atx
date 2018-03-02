@@ -1,8 +1,8 @@
 // load the database into the atxData variable
 atxData = [];
 queryURL = '/companies';
-d3.json(queryURL,function(error,response){
-    if(error) {
+d3.json(queryURL, function (error, response) {
+    if (error) {
         console.log(error);
     }
     else {
@@ -13,8 +13,7 @@ d3.json(queryURL,function(error,response){
         $totalInput.addEventListener("click", handleTotalInputClick);
         $austinInput.addEventListener("click", handleAustinInputClick);
         $marketInput.addEventListener("click", handlemarketInputClick);
-    
-        make_viz(atxData,"austin_staff_cnt");
+        make_viz(atxData, "austin_staff_cnt");
         // mapTags(atxData);
         buildMap();
     }
@@ -23,22 +22,22 @@ d3.json(queryURL,function(error,response){
 // Tree Chart functions
 
 // window.onload=function(){
-    
+
 // };
 
 function handleAustinInputClick() {
-    make_viz(atxData,"austin_staff_cnt");
+    make_viz(atxData, "austin_staff_cnt");
 };
 
 function handlemarketInputClick() {
-    make_viz(atxData,"marketcap");
+    make_viz(atxData, "marketcap");
 };
 
 function handleTotalInputClick() {
-    make_viz(atxData,"comp_staff_cnt");
+    make_viz(atxData, "comp_staff_cnt");
 };
 
-function make_viz(data,value) {
+function make_viz(data, value) {
     d3.select("#viz").html("");
     var visualization = d3plus.viz()
         .container("#viz")
@@ -51,32 +50,29 @@ function make_viz(data,value) {
 
 // Map Functions
 
-buildMap() {
+function buildMap() {
     var myMap = L.map("map", {
         center: [30.26, -97.74],
         zoom: 9
-      });
-      
-      // Add a tile layer
-      L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/streets-v9/tiles/256/{z}/{x}/{y}?" +
+    });
+    // Add a tile layer
+    L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/streets-v9/tiles/256/{z}/{x}/{y}?" +
         "access_token=pk.eyJ1IjoiZGF2aWR3aW5kc29yam9uZXMiLCJhIjoiY2pkaGp5NTl3MHpjcjMybzF3amJmamx4dyJ9.BiMjzvW8P7LbydGuff9qwg"
-      ).addTo(myMap);
-      mapTags(atxData);
-      
-      function mapTags(atxData) {
+    ).addTo(myMap);
+    mapTags(atxData);
+    function mapTags(atxData) {
         console.log("mapTag" + atxData);
         latlng = [];
         loadData(atxData);
-    
-          function loadData(atxData) {
-              for (var i = 0; atxData.length; i++) {
-                  latlng = [atxData[i].lat, atxData[i].lng];
-                  console.log(atxData[i].name + " : " + i);
-                  L.marker(latlng)
-                      .bindPopup("<h4>" + atxData[i].name + "</h4>" + "<br>" + atxData[i].sector +"<hr> "
-                          + atxData[i].address + "<br>" + atxData[i].city + ", " + atxData[i].state + " " + atxData[i].zip_code + "<br>" + atxData[i].phn_nbr)
-                      .addTo(myMap);
-              }
-          }
-      };
+        function loadData(atxData) {
+            for (var i = 0; i < atxData.length; i++) {
+                latlng = [atxData[i].lat, atxData[i].lng];
+                console.log(atxData[i].name + " : " + i);
+                L.marker(latlng)
+                    .bindPopup("<h4>" + atxData[i].name + "</h4>" + "<br>" + atxData[i].sector + "<hr> "
+                        + atxData[i].address + "<br>" + atxData[i].city + ", " + atxData[i].state + " " + atxData[i].zip_code + "<br>" + atxData[i].phn_nbr)
+                    .addTo(myMap);
+            };
+        };
+    };
 }
