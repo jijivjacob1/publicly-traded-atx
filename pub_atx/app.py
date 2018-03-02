@@ -134,7 +134,7 @@ def company_trading_data(ticker):
     company_dict = get_company_info(ticker)
     company_id = company_dict['companyId']
     last_year_date = get_date_one_year_ago()
-    trading_data = session.query(CompanyPrcsDaily)\
+    trading_data = db.session.query(CompanyPrcsDaily)\
                     .filter(CompanyPrcsDaily.id_cmpny == company_id,
                     CompanyPrcsDaily.date > last_year_date).statement
     trading_df = pd.read_sql(trading_data, session.bind)
