@@ -105,7 +105,6 @@ def company_profile(ticker):
 This api route returns a json object with stock data for a given company.
 It is used in the company overview page.  It takes one argument, a ticker
 symbol, which is used to find the company in the database.
-'''
 @app.route('/trading-data/<ticker>')
 def company_tickers_ordered(ticker):
     company_dict = get_company_info(ticker)
@@ -118,3 +117,4 @@ def company_tickers_ordered(ticker):
     ##trading_df = trading_df[['id_cmpny', 'date', 'open', 'high', 'low', 'close', 'volume']]
     trading_dict = trading_df.to_dict(orient="records")
     return jsonify(trading_dict)
+'''
