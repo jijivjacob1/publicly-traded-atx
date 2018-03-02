@@ -115,6 +115,6 @@ def company_tickers_ordered(ticker):
     trading_df = pd.DataFrame(stock_data,
                 columns=['id_cmpny_prcs_daily', 'id_cmpny', 'date', 'open',
                         'high', 'low', 'close', 'volume'])
-    trading_df = trading_df[['id_cmpny', 'date', 'open', 'high', 'low', 'close', 'volume']]
+    ##trading_df = trading_df[['id_cmpny', 'date', 'open', 'high', 'low', 'close', 'volume']]
     trading_dict = trading_df.to_dict(orient="records")
     return jsonify(trading_dict)
