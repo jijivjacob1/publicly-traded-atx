@@ -52,7 +52,6 @@ It is used in the company overview page.
 def get_company_info(ticker):
     ticker = ticker.upper()
     sql_response = db.session.query(Company).filter(Company.tckr == ticker).first()
-    market_cap = '${:,.2f}'.format(sql_response.marketcap.float())
     company_dict = {'companyName': sql_response.name,
                     'companyIndustry': sql_response.sector,
                     'companyWebsite': sql_response.website,
@@ -63,8 +62,8 @@ def get_company_info(ticker):
                     'companyCEO': sql_response.curr_top_exec,
                     'companyMarketCap': market_cap,
                     'companyYear': sql_response.yr_estblsh,
-                    'companyTotalStaff': sql_response.austin_staff_cnt.int(),
-                    'companyAustinStaff': sql_response.comp_staff_cnt.int()
+                    'companyTotalStaff': sql_response.austin_staff_cnt,
+                    'companyAustinStaff': sql_response.comp_staff_cnt
     }
     return company_dict
 
