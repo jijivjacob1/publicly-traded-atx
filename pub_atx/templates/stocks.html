@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title> {{companyTicker}} - Overview </title>
+  <link href="https://markgroner.github.io/scraping_mars/yeti.css" rel="stylesheet">
+  <script src="https://unpkg.com/simple-statistics@5.0.0/dist/simple-statistics.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <style>
+    body {
+      background-color: unset;
+    }
+
+    th,
+    td {
+      text-align: left;
+      padding: 8px;
+    }
+
+    tbody>tr:nth-child(even) {
+      background-color: #f2f2f2 !important;
+    }
+
+    tbody>tr:nth-child(odd) {
+      background-color: #fff !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    ion -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#"> Publicly Traded ATX </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+      <div class="jumbotron">
+        <div class="jumbotron__body">
+          <div class="container">
+            <div class="row">
+              <h1>{{ companyName }} - Financial Overview </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-8 col-md-4 wrapped-box">
+          <h2> Company Profile </h2>
+          <hr class="hr-data-comparison">
+          <div class="well">
+              <h5>Select New Copmany by Ticker:</h5>
+              <select id="selDataset" onChange='window.open(this.value, "_self")'></select>
+          </div>
+          <p> {{ companyWebsite }} </p>
+          <hr class="hr-data-comparison">
+          <p> {{ companyDescription }} </p>
+        </div>
+        <div class="col-xs-12 col-md-1"></div>
+        <div class="row side-plots-buffer"></div>
+        <div class="col-xs-12 col-md-7 wrapped-box side-plots">
+          <h2 > Stock Performance </h2>
+          <hr>
+          <div id="plot"></div>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <h2> Recent Press </h2> <br />
+      </div>
+      <hr class="hr-data-comparison">
+      <div class="row">
+        <div class='article-list'> </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="/static/js/company.js"></script>
+</body>
+
+</html>
