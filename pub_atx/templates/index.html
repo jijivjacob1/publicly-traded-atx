@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Publicly Traded ATX</title>
+
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+
+    <script src="https://d3js.org/d3.v5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3plus/1.9.8/d3plus.full.js"></script>
+    <!-- Leaflet CSS & JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+    
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0-beta.3/sandstone/bootstrap.min.css" rel="stylesheet" integrity="sha384-XNRTCesHENaXoVVjLx3Vm0rmwmS4W2g5w0xwZQIDPDvT4IDa/HRIvwb8CoH7/JPW"
+        crossorigin="anonymous">
+
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h1>
+                <strong>A visual financial exploration of Austin’s top publicly traded companies.</strong>
+                <hr>
+            </h1>
+            <p>
+
+                We would like to give you an opportunity to look at the Austin business environment (as defined by the top 30 publicly traded
+                companies) and explore the past 3 years of trading data, revenue and market cap data. Our desire is to give
+                you a sandbox to play in that will help you better understand the health of our local economy vis a vis our
+                publicly traded companies.
+            </p>
+        </div>
+        <div class="sigline">
+            <p>| University of Texas at Austin : Data Analytics & Visualization |</p>
+            <p>Project Team: Mark Groner, Jiji Jacob, David W. Jones </p>
+
+        </div>
+
+        <div class="container">
+            <div id="viz"></div>
+        </div>
+        <!-- <script type="text/javascript" src="tree.js"></script> -->
+        <script src="{{ url_for('static', filename='js/tree.js') }}"></script>
+        <div class="btn-group">
+            <button type="button" id='total'class="btn btn-primary">Total Employee Base</button>
+            <button type="button" id='austin'class="btn btn-primary">Austin Based Employees</button>
+            <button type="button" id='market'class="btn btn-primary">Company Market Cap</button>
+        </div>
+          
+    </div>
+    <p>This Chart shows you all of the companies, ranked by number of employees </p>
+
+    </div>
+    <script src="{{ url_for('static', filename='js/map.js') }}"></script>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="map-container">
+                    <div id="map_div"></div>
+                    <!-- <p>This Chart shows you all of the companies, ranked by number of employees </p> -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <script type="text/javascript" src="map.js"></script> -->
+    
+    <script src="{{ url_for('static', filename='css/styles.css') }}"></script>
+
+
+</body>
+
+</html>

@@ -27,6 +27,10 @@ app.config['QUANDL_API_KEY'] = os.environ.get('QUANDL_API_KEY', '') or ''
 db = SQLAlchemy(app)
 from .models import Company,company_columns
 
+@app.route("/")
+def home():
+    return render_template("index.html")
+
 @app.route('/companies')
 def companies():
 
