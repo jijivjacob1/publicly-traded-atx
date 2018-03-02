@@ -2,6 +2,7 @@
 import numpy as np
 import pandas as pd
 import os
+import datetime
 
 from flask import (
     Flask,
@@ -103,6 +104,27 @@ def company_profile(ticker):
 
 
 '''
+Pads single digit month and day integers so they can be passed in an es query
+'''
+def pad_single_digit_date_obj(date_obj):
+   if date_obj < 10:
+       date_obj = f'0{date_obj}'
+   return date_obj
+
+
+'''
+Gets current date and subtracts a year.  Puts that in a format that can be used
+in sql query.
+'''
+def get_date_one_year_ago():
+    now = datetime.datetime.now()
+    last_year = now.year - 1
+    month = pad_single_digit_date_obj(now.month)
+    day = pad_single_digit_date_obj(now.day)
+    return f'{last_year}-{month}-{day}'
+
+
+'''
 This api route returns a json object with stock data for a given company.
 It is used in the company overview page.  It takes one argument, a ticker
 symbol, which is used to find the company in the database.
@@ -111,8 +133,10 @@ symbol, which is used to find the company in the database.
 def company_trading_data(ticker):
     company_dict = get_company_info(ticker)
     company_id = company_dict['companyId']
-    trading_data = db.session.query(CompanyPrcsDaily)\
-                    .filter(CompanyPrcsDaily.id_cmpny == company_id).statement
+    last_year_date = get_date_one_year_ago()
+    trading_data = session.query(CompanyPrcsDaily)\
+                    .filter(CompanyPrcsDaily.id_cmpny == company_id,
+                    CompanyPrcsDaily.date > last_year_date).statement
     trading_df = pd.read_sql(trading_data, session.bind)
     trading_dict = trading_df.to_dict(orient="records")
     return jsonify(trading_dict)
