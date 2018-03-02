@@ -90,26 +90,6 @@ def company_tickers_ordered(ticker):
 
 
 '''
-This api route returns a json object with stock data for a given company.
-It is used in the company overview page.  It takes one argument, a ticker
-symbol, which is used to find the company in the database.
-'''
-@app.route('/trading-data/<ticker>')
-def company_tickers_ordered(ticker):
-    company_dict = get_company_info(ticker)
-    company_id = company_dict['companyId']
-    trading_data = db.session.query(CompanyPrcsDaily)\
-                    .filter(CompanyPrcsDaily.id_cmpny == company_id).first()
-    trading_df = pd.DataFrame(stock_data,
-                columns=['id_cmpny_prcs_daily', 'id_cmpny', 'date', 'open',
-                        'high', 'low', 'close', 'volume'])
-    trading_df = trading_df[['id_cmpny', 'date', 'open', 'high', 'low', 'close', 'volume']]
-    trading_dict = trading_df.to_dict(orient="records")
-    return jsonify(trading_dict)
-
-
-
-'''
 This api route serves up the html for the company overview pages.  It uses an
 html template (stocks.html) and the get_company_info() functions to serve up
 the basic structure of the page.  It takes one argument, a ticker symbol, which
