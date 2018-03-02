@@ -63,8 +63,8 @@ def get_company_info(ticker):
                     'companyCEO': sql_response.curr_top_exec,
                     'companyMarketCap': market_cap,
                     'companyYear': sql_response.yr_estblsh,
-                    'companyTotalStaff': int(sql_response.austin_staff_cnt),
-                    'companyAustinStaff': int(sql_response.comp_staff_cnt)
+                    'companyTotalStaff': int(sql_response.comp_staff_cnt),
+                    'companyAustinStaff': int(sql_response.austin_staff_cnt)
         }
     return company_dict
 
