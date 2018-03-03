@@ -49,7 +49,7 @@ function getNewsArticles() {
   d3.json(`https://api.iextrading.com/1.0/stock/${ticker}/news/last/3`, function(error, json) {
     if (error) return console.warn(error);
     var pressSection = d3.select("#press-header");
-    articleList.append("article")
+    pressSection.append("div")
           .html(`
             <h2> Recent Press </h2> <br />`);
     sleep(50);
