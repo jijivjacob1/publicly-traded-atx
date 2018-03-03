@@ -48,17 +48,10 @@ function sleep(miliseconds) {
 function getNewsArticles() {
   d3.json(`https://api.iextrading.com/1.0/stock/${ticker}/news/last/3`, function(error, json) {
     if (error) return console.warn(error);
-    var pressSection = d3.select("#press-section");
+    var pressSection = d3.select("#press-header");
     articleList.append("article")
-          .html(`<div class="row">
-                   <hr>
-                 </div>
-                 <div class="row">
-                   <h2> Recent Press </h2> <br />
-                 </div>
-                 <div class="row">
-                   <div class="article-list"> </div>
-                 </div>`);
+          .html(`
+            <h2> Recent Press </h2> <br />`);
     sleep(50);
     json.forEach(function(article) {
       addArticleToHtml(article)
