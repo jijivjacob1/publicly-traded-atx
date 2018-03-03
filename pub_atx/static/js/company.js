@@ -38,6 +38,13 @@ function getTickers() {
 }
 
 
+function sleep(miliseconds) {
+   var currentTime = new Date().getTime();
+
+   while (currentTime + miliseconds >= new Date().getTime()) {
+   }
+}
+
 function getNewsArticles() {
   d3.json(`https://api.iextrading.com/1.0/stock/${ticker}/news/last/3`, function(error, json) {
     if (error) return console.warn(error);
@@ -52,7 +59,7 @@ function getNewsArticles() {
                  <div class="row">
                    <div class="article-list"> </div>
                  </div>`);
-
+    sleep(50);
     json.forEach(function(article) {
       addArticleToHtml(article)
     });
