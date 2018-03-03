@@ -1,97 +1,3 @@
-
-
-function reverseString(str) {
-    var newString = "";
-    for (var i = str.length - 1; i >= 0; i--) {
-        newString += str[i];
-    }
-    return newString;
-}
-
-
-function stripUrlTicker() {
-  var url = window.location.href;
-  var reversedUrl = reverseString(url);
-  var slashPosition = reversedUrl.indexOf("/");
-  var reversedTicker = reversedUrl.substring(0, slashPosition).toUpperCase();
-  var ticker = reverseString(reversedTicker)
-  return ticker;
-}
-
-ticker = stripUrlTicker();
-
-
-function getTickers() {
-
-    // Grab a reference to the dropdown select element
-    var selector = document.getElementById('selDataset');
-
-    // Get the list of tickers to populate the select options
-    d3.json(`/tickers/${ticker}`, function(error, companyNames) {
-        for (var i = 0; i < companyNames.length;  i++) {
-            var currentOption = document.createElement('option');
-            currentOption.text = companyNames[i];
-            currentOption.value = companyNames[i]
-            selector.appendChild(currentOption);
-        }
-    })
-}
-
-
-function getNewsArticles() {
-  d3.json(`https://api.iextrading.com/1.0/stock/${ticker}/news/last/3`, function(error, json) {
-    if (error) return console.warn(error);
-    json.forEach(function(article) {
-      addArticleToHtml(article)
-    });
-  });
-}
-
-
-
-function getMonth(month) {
-    var monthInt = parseInt(month);
-    var monthNames = ["January", "February", "March", "April", "May", "June",
-                      "July", "August", "September", "October", "November", "December" ];
-    monthIndex = monthInt -1
-    return monthNames[monthIndex];
-}
-
-function dateTimeToStr(dateTimeObj) {
-  var year = dateTimeObj.substring(0,4);
-  var month = dateTimeObj.substring(5,7).replace(/^0+/, '');
-  var day = dateTimeObj.substring(8,10).replace(/^0+/, '');
-  var newMonth = getMonth(month)
-  var dateStr = `${newMonth} ${day}, ${year}`
-  return dateStr
-}
-
-function addArticleToHtml(articleJson) {
-  var dateStr = dateTimeToStr(articleJson.datetime);
-  var articleList = d3.select(".article-list");
-
-  articleList.append("article")
-        .html(`<div>
-              <hr>
-              <h3> <a href="${articleJson.url}" target="_blank"> ${articleJson.headline} </a> </h3>
-              <h5> ${dateStr} </h5>
-              <br />
-              <p> ${articleJson.summary} </p>
-              <p> Source: ${articleJson.source} </p>
-              </div>
-              <br />`);
-}
-
-
-
-function init() {
-    getTickers();
-    getNewsArticles();
-}
-
-init();
-
-
 var margin = {top: 20, right: 20, bottom: 30, left: 50},
         width = 960 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
@@ -162,7 +68,7 @@ var crosshair = techan.plot.crosshair()
         .yAnnotation([ohlcAnnotation, volumeAnnotation])
         .on("move", move);
 
-var svg = d3.select(".techan-plot").append("svg")
+var svg = d3.select("body").append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom);
 
@@ -226,7 +132,7 @@ var coordsText = svg.append('text')
 
 var feed;
 
-d3.json(`../daily-trading-data/${ticker}`, function(error, csv) {
+d3.json("data.json", function(error, csv) {
     var accessor = ohlc.accessor();
 
     plottingData = csv.map(function(d) {
