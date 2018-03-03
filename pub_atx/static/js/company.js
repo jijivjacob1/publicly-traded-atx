@@ -38,21 +38,19 @@ function getTickers() {
 }
 
 
-function sleep(miliseconds) {
-   var currentTime = new Date().getTime();
-
-   while (currentTime + miliseconds >= new Date().getTime()) {
-   }
-}
 
 function getNewsArticles() {
   d3.json(`https://api.iextrading.com/1.0/stock/${ticker}/news/last/3`, function(error, json) {
     if (error) return console.warn(error);
     var pressSection = d3.select("#press-header");
     pressSection.append("div")
-          .html(`
-            <h2> Recent Press </h2> <br />`);
-    sleep(50);
+          .html(`<div class="row">
+                  <h2> Recent Press </h2> <br />
+                 </div>
+                 <div class="row">
+                  <div class='article-list'> </div>
+                 </div>
+            `);
     json.forEach(function(article) {
       addArticleToHtml(article)
     });
