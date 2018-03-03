@@ -116,12 +116,13 @@ def pad_single_digit_date_obj(date_obj):
 Gets current date and subtracts a year.  Puts that in a format that can be used
 in sql query.
 '''
-def get_date_one_year_ago():
+def get_date_six_months_ago():
     now = datetime.datetime.now()
-    last_year = now.year - 1
-    month = pad_single_digit_date_obj(now.month)
-    day = pad_single_digit_date_obj(now.day)
-    return f'{last_year}-{month}-{day}'
+    six_months_ago = now - datetime.timedelta(days=180)
+    year = six_months_ago.year
+    month = pad_single_digit_date_obj(six_months_ago.month)
+    day = pad_single_digit_date_obj(six_months_ago.day)
+    return f'{year}-{month}-{day}'
 
 
 '''
@@ -129,14 +130,14 @@ This api route returns a json object with stock data for a given company.
 It is used in the company overview page.  It takes one argument, a ticker
 symbol, which is used to find the company in the database.
 '''
-@app.route('/trading-data/<ticker>')
+@app.route("/trading-data/<ticker>")
 def company_trading_data(ticker):
     company_dict = get_company_info(ticker)
     company_id = company_dict['companyId']
-    last_year_date = get_date_one_year_ago()
+    date_minimum = get_date_six_months_ago()
     trading_data = db.session.query(CompanyPrcsDaily)\
                     .filter(CompanyPrcsDaily.id_cmpny == company_id,
-                    CompanyPrcsDaily.date > last_year_date).statement
+                    CompanyPrcsDaily.date > date_minimum).statement
     trading_df = pd.read_sql(trading_data, session.bind)
     trading_dict = trading_df.to_dict(orient="records")
     return jsonify(trading_dict)
