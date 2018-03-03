@@ -134,11 +134,11 @@ symbol, which is used to find the company in the database.
 def company_daily_trading_data(ticker):
     company_dict = get_company_info(ticker)
     company_id = company_dict['companyId']
-    date_minimum = get_date_x_days_ago(180)
+    date_minimum = get_date_x_days_ago(365)
     trading_data = db.session.query(CompanyPrcsDaily)\
                     .filter(CompanyPrcsDaily.id_cmpny == company_id,
                     CompanyPrcsDaily.date > date_minimum).statement
-    trading_df = pd.read_sql(trading_data, session.bind)
+    trading_df = pd.read_sql(trading_data, db.session.bind)
     trading_dict = trading_df.to_dict(orient="records")
     return jsonify(trading_dict)
 
@@ -156,6 +156,6 @@ def company_monthly_trading_data(ticker):
     trading_data = db.session.query(CompanyPrcsMnthly)\
                     .filter(CompanyPrcsMnthly.id_cmpny == company_id,
                     CompanyPrcsMnthly.date > date_minimum).statement
-    trading_df = pd.read_sql(trading_data, session.bind).tail(12)
+    trading_df = pd.read_sql(trading_data, db.session.bind).tail(12)
     trading_dict = trading_df.to_dict(orient="records")
     return jsonify(trading_dict)
