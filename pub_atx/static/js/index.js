@@ -69,8 +69,13 @@ function buildMap() {
                 latlng = [atxData[i].lat, atxData[i].lng];
                 console.log(atxData[i].name + " : " + i);
                 L.marker(latlng)
-                    .bindPopup("<h4>" + atxData[i].name + "</h4>" + "<br>" + atxData[i].sector + "<hr> "
-                        + atxData[i].address + "<br>" + atxData[i].city + ", " + atxData[i].state + " " + atxData[i].zip_code + "<br>" + atxData[i].phn_nbr)
+                    .bindPopup(`<a href="https://atxpubliccompanies.herokuapp.com/company/${atxData[i].tckr}">
+                                      <h4> ${atxData[i].name} </h4></a> <br>
+                                ${atxData[i].sector}
+                                <hr>
+                                ${atxData[i].address} <br>
+                                ${atxData[i].city},  ${atxData[i].state}  ${atxData[i].zip_code} <br>
+                                ${atxData[i].phn_nbr}`)
                     .addTo(myMap);
             };
         };
