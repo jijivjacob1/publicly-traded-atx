@@ -41,6 +41,16 @@ function getTickers() {
 function getNewsArticles() {
   d3.json(`https://api.iextrading.com/1.0/stock/${ticker}/news/last/3`, function(error, json) {
     if (error) return console.warn(error);
+    var pressSection = d3.select("#press-section");
+    articleList.append("article")
+          .html(`<div class="row">
+                   <hr>
+                   <h2> Recent Press </h2> <br />
+                 </div>
+                 <div class="row">
+                   <div class="article-list"> </div>
+                 </div>`);
+
     json.forEach(function(article) {
       addArticleToHtml(article)
     });
