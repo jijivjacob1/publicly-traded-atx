@@ -26,7 +26,7 @@ app.config['QUANDL_API_KEY'] = os.environ.get('QUANDL_API_KEY', '') or ''
 
 
 db = SQLAlchemy(app)
-from .models import Company,company_columns,CompanyPrcsDaily
+from .models import Company,company_columns,CompanyPrcsDaily,CompanyPrcsMnthly
 
 
 @app.route("/")
@@ -116,9 +116,9 @@ def pad_single_digit_date_obj(date_obj):
 Gets current date and subtracts a year.  Puts that in a format that can be used
 in sql query.
 '''
-def get_date_six_months_ago():
+def get_date_x_days_ago(days_back):
     now = datetime.datetime.now()
-    six_months_ago = now - datetime.timedelta(days=180)
+    six_months_ago = now - datetime.timedelta(days=days_back)
     year = six_months_ago.year
     month = pad_single_digit_date_obj(six_months_ago.month)
     day = pad_single_digit_date_obj(six_months_ago.day)
@@ -130,14 +130,32 @@ This api route returns a json object with stock data for a given company.
 It is used in the company overview page.  It takes one argument, a ticker
 symbol, which is used to find the company in the database.
 '''
-@app.route("/trading-data/<ticker>")
-def company_trading_data(ticker):
+@app.route("/daily-trading-data/<ticker>")
+def company_daily_trading_data(ticker):
     company_dict = get_company_info(ticker)
     company_id = company_dict['companyId']
-    date_minimum = get_date_six_months_ago()
+    date_minimum = get_date_x_days_ago(180)
     trading_data = db.session.query(CompanyPrcsDaily)\
                     .filter(CompanyPrcsDaily.id_cmpny == company_id,
                     CompanyPrcsDaily.date > date_minimum).statement
     trading_df = pd.read_sql(trading_data, session.bind)
+    trading_dict = trading_df.to_dict(orient="records")
+    return jsonify(trading_dict)
+
+
+'''
+This api route returns a json object with stock data for a given company.
+It is used in the company overview page.  It takes one argument, a ticker
+symbol, which is used to find the company in the database.
+'''
+@app.route("/monthly-trading-data/<ticker>")
+def company_monthly_trading_data(ticker):
+    company_dict = get_company_info(ticker)
+    company_id = company_dict['companyId']
+    date_minimum = get_date_x_days_ago(380)
+    trading_data = db.session.query(CompanyPrcsMnthly)\
+                    .filter(CompanyPrcsMnthly.id_cmpny == company_id,
+                    CompanyPrcsMnthly.date > date_minimum).statement
+    trading_df = pd.read_sql(trading_data, session.bind).tail(12)
     trading_dict = trading_df.to_dict(orient="records")
     return jsonify(trading_dict)
