@@ -75,6 +75,8 @@ def load_cmpny_data():
     df_pub_atx = df_pub_atx[(df_pub_atx.tckr != 'VYEY')] 
     df_pub_atx.loc[(df_pub_atx.tckr == 'MIRN'),"tckr"]  = "SYBX"
 
+    df_pub_atx["address"] = df_pub_atx["address"].str.split("#",0).str[0]
+
     df_pub_atx["lat"]=""
     df_pub_atx["lng"]=""
     
