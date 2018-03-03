@@ -3,6 +3,7 @@ body {
 }
 
 
+
 .jumbotron {
   margin-top: 5%;
   background-color: #85bb65;
@@ -36,6 +37,11 @@ body {
   padding: 0;
   margin: 0;
 }
+
+p {
+  font-weight: normal;
+}
+
 
 #toolbar {
   text-align: center;
