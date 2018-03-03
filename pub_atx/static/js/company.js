@@ -45,6 +45,8 @@ function getNewsArticles() {
     articleList.append("article")
           .html(`<div class="row">
                    <hr>
+                 </div>
+                 <div class="row">
                    <h2> Recent Press </h2> <br />
                  </div>
                  <div class="row">
