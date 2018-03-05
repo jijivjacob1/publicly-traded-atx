@@ -52,7 +52,7 @@ p {
 } */
 /* #map {position: absolute; top:9%; bottom:20%; left: 10%; width:80%;} */
 #map {
-  width: 80vw;
+  /* width: 80vw; */
   height: 50vh;
   top:9%;
   bottom: 20%;
