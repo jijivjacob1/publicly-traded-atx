@@ -44,7 +44,7 @@ function getNewsArticles() {
     var pressSection = d3.select("#press-section");
     pressSection.append("div")
           .html(`<div class="row">
-                  <h2> Recent Press </h2> <br />
+                  <h2 class="section-title"><span>Recent Press</span></h2> <br />
                  </div>
                  <div class="row">
                   <div class='article-list'> </div>
@@ -82,7 +82,7 @@ function addArticleToHtml(articleJson) {
   articleList.append("article")
         .html(`<div>
               <hr>
-              <h3> <a href="${articleJson.url}" target="_blank"> ${articleJson.headline} </a> </h3>
+              <h4> <a href="${articleJson.url}" target="_blank"> ${articleJson.headline} </a> </h4>
               <h5> ${dateStr} </h5>
               <br />
               <p> ${articleJson.summary} </p>
