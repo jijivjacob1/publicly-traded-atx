@@ -60,6 +60,38 @@ p {
 
 
 
+.head-title {
+  font-family: Alice, Georgia, serif;
+  font-size: 49px;
+  font-size: 3.0625rem;
+}
+.head-title a {
+  text-decoration: none;
+  color: #333333;
+}
+.head-tagline {
+  display: block;
+  font-size: 14px;
+  font-size: 0.875rem;
+  line-height: 1.2em;
+  color: #474747;
+}
+.head-tagline b {
+  font-weight: normal;
+}
+.head-tagline a {
+  color: #5E5E5E;
+}
+.head-title {
+  font-size: 49px;
+  font-size: 3.0625rem;
+}
+.head-tagline {
+  font-size: 16px;
+  font-size: 1rem;
+}
+
+
 text {
     fill: #000;
 }
