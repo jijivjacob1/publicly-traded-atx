@@ -1,169 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Publicly Traded ATX</title>
-    <script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
-    <script src="https://d3js.org/d3.v5.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3plus/1.9.8/d3plus.full.js"></script>
-    <!-- Leaflet CSS & JS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+	<title>Publicly Traded ATX</title>
 
-    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0-beta.3/sandstone/bootstrap.min.css" rel="stylesheet" integrity="sha384-XNRTCesHENaXoVVjLx3Vm0rmwmS4W2g5w0xwZQIDPDvT4IDa/HRIvwb8CoH7/JPW"
-        crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+	<link rel="shortcut icon" href="static/images/capitol_square2.jpg">
+
+	<!-- Bootstrap -->
+	<link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css" rel="stylesheet">
+	<!-- Icons -->
+	<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	<!-- Fonts -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alice|Open+Sans:400,300,700">
+	<!-- Custom styles -->
+	<link rel="stylesheet" href="static/css/inito_styles.css">
+  <link rel="stylesheet" href="static/css/basic_style.css">
 
 
+	<!--[if lt IE 9]> <script src="static/js/inito_html5shiv.js"></script> <![endif]-->
 </head>
+<body class="home">
 
-<body>
-  <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="#"> Publicly Traded ATX </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href=".\company\ACC">Company Profiles</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+<header id="header">
+	<div id="head" class="parallax page-head" parallax-speed="2">
+		<h1 id="logo" class="text-center">
+			<br />
+			<br />
+			<span class="title">Publicly Traded ATX</span>
+			<span class="tagline">Exploring Austin's Top Publicly Traded Companies Through Data</span>
+		</h1>
+	</div>
 
-    <div class="container">
-        <div class="jumbotron text-center">
-            <h1>
-                <strong> Exploring Austin's Top Publicly Traded Companies Through Data </strong>
-                <hr>
-            </h1>
-            <p style="font-weight: normal">
-                This site gives you the opportunity to take an in-depth look at Austin's business environment.
-                It details financial data of the city's top 31 publicly traded companies.  Visitors are able to explore
-                trading, revenue, market cap data, and much more.  The purpose is to provide tools to explore and
-                learn about the Austin economy through the lens of its largest companies.
-            </p>
-            <p style="font-weight: normal">
-                The primary data source for this project was a company metadata from the
-                <strong><a href="https://www.bizjournals.com/austin/" style="color: black"> Austin Business Journal</a></strong>.  That information was
-                supplemented with data from <strong><a href="https://www.quandl.com/" style="color: black"> Quandl </a></strong> and
-                <strong><a href="https://iextrading.com/" style="color: black"> IEX</a></strong>.
-            </p>
+	<nav class="navbar navbar-default navbar-sticky">
+		<div class="container-fluid">
 
-            <p>
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+			</div>
 
-            </p>
-        </div>
-    </div>
-    <br />
-    <hr>
-    <div class="container">
-        <div class="row">
+			<div class="navbar-collapse collapse">
+
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Home</a></li>
+					<li><a href="data"><a href="company/ACC">Company Profiles</a></li>
+				</ul>
+
+			</div><!--/.nav-collapse -->
+		</div>
+	</nav>
+</header>
+
+<main id="main">
+
+	<div class="container">
+
+		<div class="row section topspace">
+			<div class="col-md-12">
+				<p>
+          This site gives you the opportunity to take an in-depth look at Austin's business environment.
+          It details financial data of the city's top 31 publicly traded companies.  Visitors are able to explore
+          trading, revenue, market cap data, and much more.  The purpose is to provide tools to explore and
+          learn about the Austin economy through the lens of its largest companies.
+					<br />
+					<br />
+          The primary data source for this project was a company metadata from the
+          <strong><a href="https://www.bizjournals.com/austin/" style="color: black"> Austin Business Journal</a></strong>.  That information was
+          supplemented with data from <strong><a href="https://www.quandl.com/" style="color: black"> Quandl </a></strong> and
+          <strong><a href="https://iextrading.com/" style="color: black"> IEX</a></strong>.
+				</p>
+			</div>
+		</div> <!-- / section -->
+
+		<div class="row section featured topspace">
+			<h2 class="section-title"><span>Company Size</span></h2>
+			<div class="container">
+          <div class="row">
             <div class="col-md-12">
-                <p>
-                    Many people have preconceived ideas about the Austin economy. Most see it as a high-tech mecca, much like Silicon Valley
-                    in California.  In many ways, those assumptions are accurate.  Tech giants such as Apple, IBM, and Google
-                    all have large offices in the Austin area.  The city is also home to various tech starts including HomeAway and WP Engine.
-                </p>
-                <p>
-                    However, Austin's economy has so much more to offer.  The chart below gives you the opportunity
-                    to explore the city's public companies from three different angles.  Each box represents one of the 31
-                    companies with global headquarters in Austin.  You can use the buttons below the chart to toggle views.
-                </p>
+              <p>
+                  Many people have preconceived ideas about the Austin economy. Most see it as a high-tech mecca, much like Silicon Valley
+                  in California.  In many ways, those assumptions are accurate.  Tech giants such as Apple, IBM, and Google
+                  all have large offices in the Austin area.  The city is also home to various tech starts including HomeAway and WP Engine.
+              </p>
+              <p>
+                  However, Austin's economy has so much more to offer.  The chart below gives you the opportunity
+                  to explore the city's public companies from three different angles.  Each box represents one of the 31
+                  companies with global headquarters in Austin.  You can use the buttons below the chart to toggle views.
+              </p>
             </div>
+          </div>
+          <div class="container">
+              <div id="viz"></div>
+          </div>
+          <div id="toolbar">
+              <div class="btn-group">
+                  <button type="button" id='market' class="btn btn-primary">Company Market Cap</button>
+                  <button type="button" id='austin' class="btn btn-primary">Austin Based Employees</button>
+                  <button type="button" id='total' class="btn btn-primary">Total Employee Base</button>
+              </div>
+          </div>
+          <p> </p>
+          <p>
+              First, look at them scaled by market capitalization (total outstanding shares * market value per share).
+              This will give you a view of which companies have the greatest overall value. You can also look at them
+              scaled by the largest employers in the Austin market. This will show you the direct impact these companies
+              have in our local economy as job creators. Lastly, look at them scaled by total employee base. This will
+              give you a feel for the number of employees outside of Austin and the impact of these businesses on other economies.
+          </p>
         </div>
-        <div class="container">
-            <div id="viz"></div>
-        </div>
-        <div id="toolbar">
-            <div class="btn-group">
-                <button type="button" id='market' class="btn btn-primary">Company Market Cap</button>
-                <button type="button" id='austin' class="btn btn-primary">Austin Based Employees</button>
-                <button type="button" id='total' class="btn btn-primary">Total Employee Base</button>
-            </div>
-        </div>
-        <p> </p>
-        <p>
-            First, look at them scaled by market capitalization (total outstanding shares * market value per share).
-            This will give you a view of which companies have the greatest overall value. You can also look at them
-            scaled by the largest employers in the Austin market. This will show you the direct impact these companies
-            have in our local economy as job creators. Lastly, look at them scaled by total employee base. This will
-            give you a feel for the number of employees outside of Austin and the impact of these businesses on other economies.
-        </p>
-    </div>
+		</div> <!-- / section -->
 
-    <hr>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <p>
-                  Austin is a community that is known for its traffic.  This map shows the
-                  location of all the publicly traded companies.  This is an opportunity
-                  to look clustering of business types.  The hot spots are
-                  downtown Austin and the North Austin area known as The Domain.
-                </p>
-                <p>
-                  Click on the markers on the map for more information about the company and a link
-                  to the company overview page.
-                </p>
-            </div>
-        </div>
-        <div id="map-container">
-            <div id="map"></div>
-        </div>
-    </div>
+		<div class="row section recentworks topspace">
 
-    <hr>
+			<h2 class="section-title"><span>Office Locations</span></h2>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <p>
-                  The bubble chart below provides a visual representation of Austin's
-                  diverse economy.  The bubble size represents the total number of employees
-                  at each company and the color represents the industry.  While the
-                  tech industry is well represented, the chart shows how the drivers of Austin's
-                  economy are spread across seven different industries.
-                </p>
-            </div>
-        </div>
-        <div>
-           <a href="https://plot.ly/~jiji_v_jacob/2/?share_key=xTL4zTfssiULRNUWBv0Pwu" target="_blank" title="atxPublicCompanies" style="display: block; text-align: center;"><img src="https://plot.ly/~jiji_v_jacob/2.png?share_key=xTL4zTfssiULRNUWBv0Pwu" alt="atxPublicCompanies" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
-           <script data-plotly="jiji_v_jacob:2" sharekey-plotly="xTL4zTfssiULRNUWBv0Pwu" src="https://plot.ly/embed.js" async></script>
-       </div>
-       <p>
-         Three of the companies that stand out from this chart are Parsley Energy,
-         American Campus Communities, and Chuy's.  Parsely Energy is one of the
-         smallest companies by total employees, but the largest by market cap.
-         American Campus Communities was founded in 1993 and is the nation's largest
-         developer, owner, and manager of high-quality student apartments.
-         Chuy's is one of the smallest by market cap, but the company employs 8,200
-         employees across the United States including almost 900 in Austin.
-       </p>
-    </div>
+			<div class="container">
+	        <div class="row">
+	            <div class="col-md-12">
+	                <p>
+	                  Austin is a community that is known for its traffic.  This map shows the
+	                  location of all the publicly traded companies.  This is an opportunity
+	                  to look clustering of business types.  The hot spots are
+	                  downtown Austin and the North Austin area known as The Domain.
+	                </p>
+	                <p>
+	                  Click on the markers on the map for more information about the company and a link
+	                  to the company overview page.
+	                </p>
+	            </div>
+	        </div>
+	        <div id="map-container">
+	            <div id="map"></div>
+	        </div>
+	    </div>
+		</div> <!-- /section -->
 
-    <hr>
+		<div class="row section recentworks topspace">
 
-    <div class="sigline">
-        <p>| University of Texas at Austin : Data Analytics & Visualization |</p>
-        <p>Project Team: Mark Groner, Jiji Jacob, David W. Jones </p>
+			<h2 class="section-title"><span>Year Established and Market Cap</span></h2>
 
-    </div>
+			<div class="container">
+	        <div class="row">
+	            <div class="col-md-12">
+	                <p>
+	                  The bubble chart below provides a visual representation of Austin's
+	                  diverse economy.  The bubble size represents the total number of employees
+	                  at each company and the color represents the industry.  While the
+	                  tech industry is well represented, the chart shows how the drivers of Austin's
+	                  economy are spread across seven different industries.
+	                </p>
+	            </div>
+	        </div>
+	        <div>
+	           <a href="https://plot.ly/~jiji_v_jacob/2/?share_key=xTL4zTfssiULRNUWBv0Pwu" target="_blank" title="atxPublicCompanies" style="display: block; text-align: center;"><img src="https://plot.ly/~jiji_v_jacob/2.png?share_key=xTL4zTfssiULRNUWBv0Pwu" alt="atxPublicCompanies" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+	           <script data-plotly="jiji_v_jacob:2" sharekey-plotly="xTL4zTfssiULRNUWBv0Pwu" src="https://plot.ly/embed.js" async></script>
+	       </div>
+	       <p>
+	         Three of the companies that stand out from this chart are Parsley Energy,
+	         American Campus Communities, and Chuy's.  Parsely Energy is one of the
+	         smallest companies by total employees, but the largest by market cap.
+	         American Campus Communities was founded in 1993 and is the nation's largest
+	         developer, owner, and manager of high-quality student apartments.
+	         Chuy's is one of the smallest by market cap, but the company employs 8,200
+	         employees across the United States including almost 900 in Austin.
+	       </p>
+	    </div>
+		</div> <!-- /section -->
 
 
-    <script src="/static/js/index.js" type="text/javascript"></script>
+		<div class="row section clients topspace">
+			<h2 class="section-title"><span>Contributors</span></h2>
+			<div class="row">
+				<div class="col-md-2">
+				</div>
+				<div class="col-md-3">
+					<h4>
+						Mark Groner
+					</h4>
+	        <p>
+	          <b> Connect: </b> <br />
+	          <a href="https://www.linkedin.com/in/mark-groner/" target="_blank">
+	            LinkedIn
+	          </a> <br />
+	          <a href="https://github.com/markgroner" target="_blank">
+	            GitHub
+	          </a>
+	        </p>
+				</div>
+				<div class="col-md-3">
+					<h4>
+						Jiji Jacob
+					</h4>
+	        <p>
+	          <b> Connect: </b> <br />
+	          <a href="https://www.linkedin.com/in/jiji-jacob-428a803/" target="_blank">
+	            LinkedIn
+	          </a> <br />
+	          <a href="https://github.com/jijivjacob1" target="_blank">
+	            GitHub
+	          </a>
+	        </p>
+				</div>
+				<div class="col-md-3">
+					<h4>
+						David Jones
+					</h4>
+	        <p>
+	          <b> Connect: </b> <br />
+	          <a href="https://www.linkedin.com/in/david-w-jones-atx/" target="_blank">
+	            LinkedIn
+	          </a> <br />
+	          <a href="https://github.com/davidwjones" target="_blank">
+	            GitHub
+	          </a>
+	        </p>
+				</div>
+				<div class="col-md-1">
+				</div>
+			</div>
+		</div> <!-- /section -->
+
+	</div>	<!-- /container -->
+
+</main>
+
+
+<footer id="underfooter">
+	<div class="container">
+		<div class="row">
+
+
+			<div class="col-md-6 widget">
+				<div class="widget-body">
+					<p>
+						<b>University of Texas at Austin</b><br>
+						Data Analytics and Visualization Program
+					</p>
+
+				</div>
+			</div>
+
+			<div class="col-md-6 widget">
+				<div class="widget-body">
+					<p class="text-right">
+						Design: <a href="http://www.gettemplate.com" rel="designer" target="_blank">Initio by GetTemplate</a>
+					</p>
+				</div>
+			</div>
+
+
+		</div> <!-- /row of widgets -->
+	</div>
+</footer>
+
+
+
+<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3plus/1.9.8/d3plus.full.js"></script>
+<script src="static/js/inito_template.js"></script>
+<script src="/static/js/index.js" type="text/javascript"></script>
+<script src="https://d3js.org/d3.v5.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3plus/1.9.8/d3plus.full.js"></script>
+<!-- Leaflet CSS & JS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
 </body>
-
 </html>
