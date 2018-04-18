@@ -45,9 +45,15 @@ function getNewsArticles() {
     pressSection.append("div")
           .html(`<div class="row">
                   <h2 class="section-title"><span>Recent Press</span></h2> <br />
-                 </div>
+                  </div>
+                  <div class="col-xs-12 col-md-1">
+                  </div>
+                  <div class="col-xs-12 col-md-10">
                  <div class="row">
                   <div class='article-list'> </div>
+                 </div>
+                 </div>
+                 <div class="col-xs-12 col-md-1">
                  </div>
             `);
     json.forEach(function(article) {
